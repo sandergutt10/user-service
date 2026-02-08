@@ -1,0 +1,351 @@
+:root {
+  --bg: #eff3f8;
+  --panel: #ffffff;
+  --text: #172231;
+  --muted: #5f6f83;
+  --accent: #0f7db8;
+  --accent-2: #c57a2d;
+  --danger: #b13b3b;
+  --line: #d9e4ee;
+  --shadow: 0 22px 50px rgba(16, 35, 56, 0.1);
+  --shadow-soft: 0 8px 20px rgba(16, 35, 56, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Space Grotesk", sans-serif;
+  color: var(--text);
+  background: radial-gradient(circle at 2% 10%, #fff4d9 0%, transparent 28%),
+    radial-gradient(circle at 94% 5%, #d9f1ff 0%, transparent 30%),
+    linear-gradient(180deg, #f3f8fd 0%, #edf2f7 100%);
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.ambient {
+  position: fixed;
+  z-index: -1;
+  border-radius: 999px;
+  filter: blur(70px);
+  opacity: 0.4;
+  animation: float 8s ease-in-out infinite alternate;
+}
+
+.ambient-a {
+  width: 280px;
+  height: 280px;
+  background: #ffd480;
+  left: -90px;
+  top: 20%;
+}
+
+.ambient-b {
+  width: 320px;
+  height: 320px;
+  background: #8fd8ff;
+  right: -120px;
+  top: 8%;
+}
+
+.layout {
+  width: min(1100px, 92vw);
+  margin: 1.2rem auto 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.panel {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.95) 0%, rgba(252, 254, 255, 0.92) 100%);
+  border: 1px solid #e2ebf2;
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  padding: 1.15rem;
+  backdrop-filter: blur(8px);
+}
+
+.topbar {
+  width: min(1100px, 92vw);
+  margin: 1rem auto 0;
+  background: linear-gradient(180deg, #ffffffdd 0%, #f8fbffdd 100%);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  box-shadow: var(--shadow-soft);
+  padding: 0.7rem 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  position: sticky;
+  top: 0.7rem;
+  z-index: 20;
+  backdrop-filter: blur(9px);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-weight: 700;
+}
+
+.brand-dot {
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #2cb9ff 0%, #0f7db8 100%);
+  box-shadow: 0 0 0 6px rgba(44, 185, 255, 0.14);
+}
+
+.menu {
+  display: flex;
+  gap: 0.35rem;
+  background: #f4f8fc;
+  border: 1px solid #e2ebf3;
+  border-radius: 10px;
+  padding: 0.18rem;
+}
+
+.menu-item {
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--muted);
+  padding: 0.45rem 0.75rem;
+  border-radius: 9px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.menu-item.active {
+  color: var(--text);
+  border-color: #bbdef2;
+  background: #ffffff;
+  box-shadow: 0 3px 10px rgba(19, 48, 73, 0.08);
+}
+
+.session {
+  margin-left: auto;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.small {
+  padding: 0.4rem 0.7rem;
+  font-size: 0.85rem;
+}
+
+.view {
+  display: none;
+}
+
+.view.active {
+  display: block;
+  animation: show 0.28s ease;
+}
+
+.two-cols {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.users-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.9rem;
+}
+
+.hero {
+  position: relative;
+}
+
+.eyebrow {
+  display: inline-block;
+  margin-bottom: 0.6rem;
+  padding: 0.25rem 0.55rem;
+  border-radius: 999px;
+  background: #e9f5fc;
+  color: #0a6c9f;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.hero-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.7rem;
+  margin-bottom: 1rem;
+}
+
+.hero-card {
+  border: 1px solid #e4edf4;
+  background: #f9fcff;
+  border-radius: 12px;
+  padding: 0.7rem;
+}
+
+.hero-card span {
+  display: block;
+  font-size: 0.77rem;
+  color: var(--muted);
+  margin-bottom: 0.2rem;
+}
+
+.hero-card strong {
+  font-size: 0.93rem;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0 0 0.7rem;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
+}
+
+h2 {
+  font-size: 1.15rem;
+}
+
+h3 {
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+p {
+  margin: 0 0 1rem;
+  color: var(--muted);
+}
+
+.form-grid {
+  display: grid;
+  gap: 0.55rem;
+  margin-bottom: 1rem;
+  padding: 0.2rem;
+  border-radius: 10px;
+}
+
+input,
+textarea,
+button {
+  font: inherit;
+}
+
+input,
+textarea {
+  width: 100%;
+  border: 1px solid #d8e4ef;
+  background: #fff;
+  border-radius: 10px;
+  padding: 0.65rem 0.72rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: #9ac9e5;
+  box-shadow: 0 0 0 4px rgba(67, 155, 204, 0.13);
+}
+
+textarea {
+  resize: vertical;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.84rem;
+}
+
+.btn {
+  border: 0;
+  border-radius: 10px;
+  background: var(--accent);
+  color: #fff;
+  padding: 0.58rem 0.85rem;
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow: 0 8px 16px rgba(15, 125, 184, 0.2);
+  transition: transform 0.15s ease, filter 0.15s ease;
+}
+
+.btn:hover {
+  filter: brightness(1.04);
+  transform: translateY(-1px);
+}
+
+.btn.warn {
+  background: var(--accent-2);
+}
+
+.btn.danger {
+  background: var(--danger);
+}
+
+.btn.subtle {
+  background: #385b73;
+}
+
+.token-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.output pre {
+  margin: 0;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.83rem;
+  background: linear-gradient(180deg, #0f1f31 0%, #11263d 100%);
+  color: #e7f2ff;
+  border-radius: 12px;
+  padding: 0.8rem;
+  min-height: 220px;
+  overflow: auto;
+  border: 1px solid #243850;
+}
+
+@keyframes show {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  from {
+    transform: translateY(0) translateX(0);
+  }
+  to {
+    transform: translateY(-16px) translateX(8px);
+  }
+}
+
+@media (max-width: 840px) {
+  .topbar {
+    flex-wrap: wrap;
+  }
+
+  .session {
+    order: 4;
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .two-cols,
+  .users-grid,
+  .hero-cards {
+    grid-template-columns: 1fr;
+  }
+}

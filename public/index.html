@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Панель пользователей</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="ambient ambient-a"></div>
+    <div class="ambient ambient-b"></div>
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-dot"></span>
+        <span>Сервис пользователей</span>
+      </div>
+      <nav class="menu">
+        <button class="menu-item active" data-view="dashboard">Панель</button>
+        <button class="menu-item" data-view="auth">Доступ</button>
+        <button class="menu-item" data-view="users">Пользователи</button>
+      </nav>
+      <div class="session" id="sessionInfo">Нет авторизации</div>
+      <button id="logoutBtn" class="btn danger small">Выйти</button>
+    </header>
+
+    <main class="layout">
+      <section class="view active" id="view-dashboard">
+        <div class="panel hero">
+          <div class="token-box">
+            <label for="token">Токен доступа</label>
+            <textarea id="token" rows="3" placeholder="JWT-токен"></textarea>
+            <div class="token-actions">
+              <button id="saveTokenBtn" class="btn subtle">Сохранить токен</button>
+              <button id="clearTokenBtn" class="btn danger">Очистить токен</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="view" id="view-auth">
+        <div class="panel two-cols">
+          <form id="registerForm" class="form-grid">
+            <h2>Регистрация</h2>
+            <input name="fullName" placeholder="ФИО" required />
+            <input name="birthDate" type="date" required />
+            <input name="email" type="email" placeholder="Email" required />
+            <input name="password" type="password" placeholder="Пароль" required />
+            <button class="btn" type="submit">Создать пользователя</button>
+          </form>
+
+          <form id="loginForm" class="form-grid">
+            <h2>Вход</h2>
+            <input name="email" type="email" placeholder="Email" required />
+            <input name="password" type="password" placeholder="Пароль" required />
+            <button class="btn" type="submit">Получить токен</button>
+          </form>
+        </div>
+      </section>
+
+      <section class="view" id="view-users">
+        <div class="panel users-grid">
+          <div class="form-grid">
+            <h2>Получить пользователя по ID</h2>
+            <input id="userIdInput" placeholder="ID пользователя (uuid)" />
+            <button id="getUserBtn" class="btn" type="button">Получить пользователя</button>
+          </div>
+
+          <div class="form-grid">
+            <h2>Получить список пользователей</h2>
+            <button id="getUsersBtn" class="btn" type="button">Получить список</button>
+          </div>
+
+          <div class="form-grid">
+            <h2>Заблокировать пользователя</h2>
+            <input id="blockUserIdInput" placeholder="ID пользователя (uuid)" />
+            <button id="blockUserBtn" class="btn warn" type="button">Заблокировать аккаунт</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel output">
+        <h2>Ответ сервера</h2>
+        <pre id="output">{ "готово": true }</pre>
+      </section>
+    </main>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
